@@ -289,25 +289,181 @@
 
 /** ARRAYS */
 // initialize new array
-var names = ['jhon', 'Mark', 'Jane'];
-var years = new Array(1990, 1978, 1967);
-console.log(names[2]);
-console.log(names.length);
+// var names = ['jhon', 'Mark', 'Jane'];
+// var years = new Array(1990, 1978, 1967);
+// console.log(names[2]);
+// console.log(names.length);
 
-// mutate array data 
-names[1] = 'Ben';
-names[names.length] = 'Mary';
-console.log(names);
-//different data Types 
-var jhon = ['Jhon', 'Smith', 1990, 'teacher', false];
-// the push() function adds the element at the end of element 
+// // mutate array data 
+// names[1] = 'Ben';
+// names[names.length] = 'Mary';
+// console.log(names);
+// //different data Types 
+// var jhon = ['Jhon', 'Smith', 1990, 'teacher', false];
+// // the push() function adds the element at the end of element 
+// jhon.push('blue');
+// // unshift  adds the element at the beginning of the arrays. 
+// jhon.unshift('MR.');
+// // to remove the last element of the array.
+// jhon.pop();
+// // to remove the first element of the array.
+// jhon.shift();
+// console.log(jhon);
+// // indexOf() it will bring the positions of original array. 
+// console.log(jhon.indexOf(1990));
+
+// // checking if arrys has a value 'designer'
+// var isDesigner = jhon.indexOf('designer') === -1 ? 'jhon is not a  designer' :
+//     'Jhon is a designer';
+// console.log(isDesigner);
+/*** CODING CHALLENGE 3  */
+
+// var billsRest1 = 124;
+// var billsRest2 = 48;
+// var billsRest3 = 268;
+// var JhonTips = [];
+// var JhonAmounts = [];
+// var tip = function(paidmentBill, name) {
+//         var tip;
+//         if (paidmentBill < 50) {
+//             tip = paidmentBill * 0.2;
+//             console.log(name + ' the tip 20% is ' + tip);
+//             return tip;
+//         } else if (paidmentBill > 50 && paidmentBill < 200) {
+//             tip = paidmentBill * 0.15;
+//             console.log(name + ' the tip  15 % is ' + tip);
+//             return tip;
+//         } else if (paidmentBill > 200) {
+//             tip = paidmentBill * 0.1;
+//             console.log(name + ' the tip 10% is ' + tip);
+//             return tip;
+//         } else {
+//             console.log(name + ', there is not a tip');
+//         }
+//     }
+//     //console.log(tip(billsRest1, 'juan '));
+// JhonTips.push(tip(billsRest1, 'juan'));
+// console.log(JhonTips);
+// JhonTips.push(tip(billsRest2, 'juan'));
+// console.log(JhonTips);
+// JhonTips.push(tip(billsRest3, 'juan'));
+// console.log(JhonTips);
+// JhonAmounts.push(JhonTips[0] + billsRest1);
+// JhonAmounts.push(JhonTips[1] + billsRest2);
+// JhonAmounts.push(JhonTips[2] + billsRest3);
+// console.log(JhonAmounts);
+/** Objects and Properties */
+// create an Object 
+// object literal 
+// var john = {
+//         firstName: 'Jhon',
+//         lastName: 'smith',
+//         birthYear: 1990,
+//         family: ['Jane', 'Mark', 'Bob', 'Emily'],
+//         job: 'Teacher',
+//         isMarried: false
+//     }
+//     // How to show of properties 
+// console.log(john.firstName);
+// // another way to show values of properties
+// console.log(john['lastName']);
+// // inserting a value the name.
+// var x = 'birthYear';
+// console.log(john[x]);
+// // Mutate some properties, changing properties.
+// john.job = 'designer';
+// john['isMarried'] = true;
+// console.log(john);
+// // new Object syntax 
+// // Another way to create an OBJECT 
+// var jane = new Object();
+// jane.firstName = 'Jane';
+// jane.birthYear = 1969;
+// jane['lastName'] = 'Smith';
+// console.log(jane);
+
+/*** OBJECTS AND METHODS  */
+// //object literal 
+// var john = {
+//     firstName: 'Jhon',
+//     lastName: 'smith',
+//     birthYear: 1990,
+//     family: ['Jane', 'Mark', 'Bob', 'Emily'],
+//     job: 'Teacher',
+//     isMarried: false,
+//     calcAge: function() {
+//         //  return 2019 - this.birthYear; OR 
+//         // this.age is going to create a property  age for jhon object
+//         this.age = 2019 - this.birthYear;
+//     }
+// };
+// // var age = john.calcAge();
+// // john.age = age;
+// // just calling method 
+// john.calcAge();
+// console.log(john);
+
+/**  CODING CHALLENGE 4  */
+// JhonMass = 85;
+// MarkMass = 90;
+// JhonHeight = 1.70;
+// MarkHeight = 1.75;
+// var Jhon = {
+//     fullName: 'Jhon Smith',
+//     mass: 85,
+//     height: 1.70,
+//     calcBIMJhon: function() {
+//         this.bmi = this.mass / (this.height ^ 2);
+//         return this.bmi;
+//     }
+// };
+// var Mark = {
+//     fullName: 'Mark Smith',
+//     mass: 90,
+//     height: 1.75,
+//     calcBIMark: function() {
+//         this.bmi = this.mass / (this.height ^ 2);
+//         return this.bmi;
+//     }
+// };
+
+
+// if (Jhon.calcBIMJhon() > Mark.calcBIMark()) {
+//     console.log(`The winner is ${ Jhon.fullName } whit value BMI: ${ Jhon.calcBIMJhon() }`);
+// } else if (Mark.calcBIMark() > Jhon.calcBIMJhon()) {
+//     console.log(`The winner is ${ Mark.fullName } whit value BMI: ${ Mark.calcBIMark() }`);
+// } else {
+//     console.log(`they have the same BMI, BMIJhon: ${ Jhon.calcBIMJhon() } BMIMark: ${ Mark.calcBIMark() }`);
+// }
+
+/** LOOPS AND ITERATION */
+// for (var i = 0; i < 10; i++) {
+//     console.log(i);
+// }
+// var jhon = ['jhon', 'smith', 1990, 'designer', false];
+// jhon.push('blue');
+// // for loop
+// for (let i = 0; i < jhon.length; i++) {
+//     console.log(jhon[i]);
+// }
+// //while loop
+// var i = 0;
+// while (i < jhon.length) {
+//     console.log(jhon[i]);
+//     i++;
+// }
+var jhon = ['jhon', 'smith', 1990, 'designer', false];
 jhon.push('blue');
-// unshift  adds the element at the beginning of the arrays. 
-jhon.unshift('MR.');
-// to remove the last element of the array.
-jhon.pop();
-// to remove the first element of the array.
-jhon.shift();
-console.log(jhon);
-// indexOf() it will bring the positions of array. 
-console.log(jhon.indexOf(1990));
+for (let i = 0; i < jhon.length; i++) {
+    if (typeof jhon[i] !== 'string') continue;
+    console.log(jhon[i]);
+}
+console.log('with break');
+for (let i = 0; i < jhon.length; i++) {
+    if (typeof jhon[i] !== 'string') break;
+    console.log(jhon[i]);
+}
+// looping backwards
+for (var j = jhon.length - 1; j >= 0; j--) {
+    console.log(jhon[j]);
+}
