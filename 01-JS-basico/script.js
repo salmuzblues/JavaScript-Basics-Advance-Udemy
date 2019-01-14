@@ -452,18 +452,92 @@
 //     console.log(jhon[i]);
 //     i++;
 // }
-var jhon = ['jhon', 'smith', 1990, 'designer', false];
-jhon.push('blue');
-for (let i = 0; i < jhon.length; i++) {
-    if (typeof jhon[i] !== 'string') continue;
-    console.log(jhon[i]);
+// var jhon = ['jhon', 'smith', 1990, 'designer', false];
+// jhon.push('blue');
+// for (let i = 0; i < jhon.length; i++) {
+//     if (typeof jhon[i] !== 'string') continue;
+//     console.log(jhon[i]);
+// }
+// console.log('with break');
+// for (let i = 0; i < jhon.length; i++) {
+//     if (typeof jhon[i] !== 'string') break;
+//     console.log(jhon[i]);
+// }
+// // looping backwards
+// for (var j = jhon.length - 1; j >= 0; j--) {
+//     console.log(jhon[j]);
+// }
+/** CODING CHALLENGE 5  */
+// var
+var tips = [];
+var total = [];
+var jhon = {
+    bills: [124, 48, 268, 180, 42],
+    calcTips: function() {
+        var tip = [];
+        for (var i = 0; i < this.bills.length; i++) {
+
+            if (this.bills[i] < 50) {
+                tip[i] = this.bills[i] * 0.2;
+            } else if (this.bills[i] > 50 && this.bills[i] < 200) {
+                tip[i] = this.bills[i] * 0.15;
+            } else {
+                tip[i] = this.bills[i] * 0.1;
+            }
+        }
+        return tip;
+    }
 }
-console.log('with break');
-for (let i = 0; i < jhon.length; i++) {
-    if (typeof jhon[i] !== 'string') break;
-    console.log(jhon[i]);
+
+for (var i = 0; i < jhon.bills.length; i++) {
+    this.tips[i] = jhon.calcTips()[i];
+    this.total[i] = this.tips[i] + jhon.bills[i];
+    console.log(`the tip for the restaurant ${ i + 1 } is ${ this.tips[i] }`);
+    console.log(`Paid amounts for the restaurant ${ i + 1 } is ${ this.total[i] }`);
 }
-// looping backwards
-for (var j = jhon.length - 1; j >= 0; j--) {
-    console.log(jhon[j]);
+var Mark = {
+    bills: [77, 375, 110, 45],
+    calcTips: function() {
+        var tip = [];
+        for (var i = 0; i < this.bills.length; i++) {
+
+            if (this.bills[i] < 100) {
+                tip[i] = this.bills[i] * 0.2;
+            } else if (this.bills[i] > 100 && this.bills[i] < 300) {
+                tip[i] = this.bills[i] * 0.1;
+            } else {
+                tip[i] = this.bills[i] * 0.25;
+            }
+        }
+        return tip;
+    }
+}
+
+var tipsMark = [];
+var totalMark = [];
+for (var i = 0; i < Mark.bills.length; i++) {
+    this.tipsMark[i] = Mark.calcTips()[i];
+    this.totalMark[i] = this.tipsMark[i] + Mark.bills[i];
+    console.log(`the tip for the restaurant ${ i + 1 } is ${ this.tipsMark[i] }`);
+    console.log(`Paid amounts for the restaurant ${ i + 1 } is ${ this.totalMark[i] }`);
+}
+var averageTipsMArk = () => {
+    let sum = 0;
+    for (var i = 0; i < this.Mark.bills.length; i++) {
+        sum += this.tipsMark[i];
+    }
+    return sum / this.Mark.bills.length;
+}
+var averageTipsJhon = () => {
+    let sum = 0;
+    for (var i = 0; i < this.jhon.bills.length; i++) {
+        sum += this.tips[i];
+    }
+    return sum / this.jhon.bills.length;
+}
+
+if (averageTipsMArk() > averageTipsJhon()) {
+    console.log(`Mark's family paid the highest average:  ${ averageTipsMArk() }`);
+} else {
+    console.log(`Jhon's family paid the highest average:  ${ averageTipsJhon() }`);
 }
