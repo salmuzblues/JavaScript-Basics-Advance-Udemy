@@ -9,21 +9,26 @@ GAME RULES:
 
 */
 // create variables 
-var scores = [0, 0];
-var roundScore = 0;
-var acitvePlayer = 0;
+// dentro de este array scores [(score-0), (score-1)];
+// var scores = [0, 0];
+// var roundScore = 0;
+// var activePlayer = 0;
 
 // manipulanto el DOM .. 
 // this change the number current
-// document.querySelector('#current-' + acitvePlayer).textContent = dice;
+// document.querySelector('#current-' r activePlayer).textContent = dice;
 
 // // this change the html context 
-// //document.querySelector('#current-' + acitvePlayer).innerHTML = '<em>' + dice + '</em>';
+// //document.querySelector('#current-' r activePlayer).innerHTML = '<em>' + dice + '</em>';
 // // jus for reading or retreiving some information from html. 
 
 // var x = document.querySelector('#score-1').textContent;
 // console.log(x);
 
+// Inicializar variables 
+var scores = [0, 0];
+var roundScore = 0;
+var activePlayer = 0;
 // how to change css styles by javaScript 
 document.querySelector('.dice').style.display = 'none';
 // this is another way and it is faster than .querySelector, and 
@@ -32,6 +37,10 @@ document.getElementById('score-0').textContent = '0';
 document.getElementById('score-1').textContent = '0';
 document.getElementById('current-0').textContent = '0';
 document.getElementById('current-1').textContent = '0';
+
+
+/**   METHODO ROLL DICE  WITH BTN-ROLL */
+
 // first we need to select the tag of html that we need to work. 
 document.querySelector('.btn-roll').addEventListener('click', () => {
     // 1.Random Number.
@@ -46,22 +55,11 @@ document.querySelector('.btn-roll').addEventListener('click', () => {
     if (dice !== 1) {
         // add score points
         roundScore += dice;
-        document.querySelector('#current-' + acitvePlayer).textContent = roundScore;
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
 
     } else {
         // next player// changing the player 
-        acitvePlayer === 0 ? acitvePlayer = 1 : acitvePlayer = 0;
-        roundScore = 0;
-        // vamos a settear 
-        document.getElementById('current-0').textContent = '0';
-        document.getElementById('current-1').textContent = '0';
-
-        // remove the class .active 
-        document.querySelector('.player-0-panel').classList.toggle('active');
-        // adding for another tag the class .active 
-        document.querySelector('.player-1-panel').classList.toggle('active');
-
-        document.querySelector('.dice').style.display = 'none';
+        nextPlayerRestart();
 
         /** JUST FOR REFERENCES  */
         // remove the class .active 
@@ -71,3 +69,50 @@ document.querySelector('.btn-roll').addEventListener('click', () => {
     }
 
 });
+
+/* METODO  HOLD para guardar Records */
+document.querySelector('.btn-hold').addEventListener('click', () => {
+    // add a current score  to global score 
+    // takes the score 0 first 
+    // adding values to score[0]; 
+    scores[activePlayer] += roundScore;
+    //update  the UI 
+    // next to show the results 
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+
+    // check if the player won the game 
+    if (scores[activePlayer] >= 20) {
+        document.querySelector('#name-' + activePlayer).textContent = 'GANADOR!';
+        document.querySelector('.dice').style.display = 'none';
+        // classList brings the access  from the class 
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+    } else {
+        nextPlayerRestart();
+    }
+});
+// this METHOD IS FOR THE BTN-NEW 
+document.querySelector('.btn-new').addEventListener('click', () => {
+
+    document.getElementById('score-0').textContent = '0';
+    document.getElementById('score-1').textContent = '0';
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+});
+
+
+function nextPlayerRestart() {
+
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+    // vamos a settear 
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+
+    // remove the class .active 
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    // adding for another tag the class .active 
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+    document.querySelector('.dice').style.display = 'none';
+}

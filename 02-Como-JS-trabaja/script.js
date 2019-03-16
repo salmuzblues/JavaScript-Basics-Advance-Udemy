@@ -9,14 +9,14 @@
 
 // // function expression only works after the code 
 // // you can not executed before the code.
-// // but function declaratios it can works before or after making 
+// // but function declarations it can works before or after making 
 // // the function
 // // it does not work before, you can not executed here retirement(1965);
 // var retirement = function(year) {
 //         console.log(65 - (2016 - year));
 //     }
 //     // here it is ok; 
-// retirement(1965);
+// retirement(1965); this is a function expressions 
 // // variables 
 // // console.log(age); it will not work! 
 // // we will obtain undefined.  
