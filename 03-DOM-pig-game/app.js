@@ -29,6 +29,7 @@ GAME RULES:
 var scores = [0, 0];
 var roundScore = 0;
 var activePlayer = 0;
+var rollTwice = 0;
 // how to change css styles by javaScript 
 document.querySelector('.dice').style.display = 'none';
 // this is another way and it is faster than .querySelector, and 
@@ -52,15 +53,27 @@ document.querySelector('.btn-roll').addEventListener('click', () => {
     diceDom.style.display = 'block';
     diceDom.src = 'dice-' + dice + '.png';
     // 3.- Update the round score if the rolled number was not a 1. 
+    console.log(dice);
+
     if (dice !== 1) {
         // add score points
         roundScore += dice;
         document.querySelector('#current-' + activePlayer).textContent = roundScore;
 
+        if (dice === 6) {
+            rollTwice += dice;
+            if (rollTwice === 12) {
+                console.log("rollTwicw: " + rollTwice);
+                this.scores[this.activePlayer] = 0;
+                document.querySelector('#score-' + activePlayer).textContent = this.scores[activePlayer];
+                rollTwice = 0;
+                nextPlayerRestart();
+            }
+        }
     } else {
         // next player// changing the player 
         nextPlayerRestart();
-
+        rollTwice = 0;
         /** JUST FOR REFERENCES  */
         // remove the class .active 
         // document.querySelector('.player-0-panel').classList.remove('active'); 
