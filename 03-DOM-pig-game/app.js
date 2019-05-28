@@ -31,6 +31,7 @@ var roundScore = 0;
 var activePlayer = 0;
 var rollTwice = 0;
 var inputScore = 0;
+var numberScore = 0; 
 // how to change css styles by javaScript 
 document.querySelector('.dice').style.display = 'none';
 // this is another way and it is faster than .querySelector, and 
@@ -93,21 +94,34 @@ document.querySelector('.btn-hold').addEventListener('click', () => {
     //update  the UI 
     // next to show the results 
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+    if( this.numberScore == 0)
+        // check if the player won the game 
+        if (scores[activePlayer] >= 20) {
+            document.querySelector('#name-' + activePlayer).textContent = 'GANADOR!';
+            document.querySelector('.dice').style.display = 'none';
+            // classList brings the access  from the class 
+            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        } else {
+            nextPlayerRestart();
+        }
+     else {
+        if (scores[activePlayer] >= this.numberScore) {
+            document.querySelector('#name-' + activePlayer).textContent = 'GANADOR!';
+            document.querySelector('.dice').style.display = 'none';
+            // classList brings the access  from the class 
+            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        } else {
+            nextPlayerRestart();
+        }
 
-    // check if the player won the game 
-    if (scores[activePlayer] >= 20) {
-        document.querySelector('#name-' + activePlayer).textContent = 'GANADOR!';
-        document.querySelector('.dice').style.display = 'none';
-        // classList brings the access  from the class 
-        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-    } else {
-        nextPlayerRestart();
-    }
+     }   
 });
 // this METHOD IS FOR THE BTN-NEW 
 document.querySelector('.btn-new').addEventListener('click', () => {
-
+    document.getElementById('name-0').textContent ='Player 1';
+    document.getElementById('name-1').textContent ='Player 2'; 
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
@@ -134,5 +148,7 @@ function nextPlayerRestart() {
 
 document.querySelector('.btn-score1').addEventListener('click', () => {
     inputScore = document.getElementById("scoreNumber").value;
-    console.log(inputScore);
+    
+    this.numberScore = Number(inputScore); 
+    
 });
