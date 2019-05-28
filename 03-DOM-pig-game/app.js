@@ -30,6 +30,7 @@ var scores = [0, 0];
 var roundScore = 0;
 var activePlayer = 0;
 var rollTwice = 0;
+var inputScore = 0;
 // how to change css styles by javaScript 
 document.querySelector('.dice').style.display = 'none';
 // this is another way and it is faster than .querySelector, and 
@@ -129,3 +130,9 @@ function nextPlayerRestart() {
 
     document.querySelector('.dice').style.display = 'none';
 }
+
+
+document.querySelector('.btn-score1').addEventListener('click', () => {
+    inputScore = document.getElementById("scoreNumber").value;
+    console.log(inputScore);
+});

@@ -156,6 +156,22 @@ i {
     top: 467px;
 }
 
+label {
+    color: #f7f7f7;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.btn-size {
+    position: relative;
+    left: 100px;
+}
+
+.input-score {
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
 .dice {
     position: absolute;
     left: 50%;
@@ -173,3 +189,17 @@ i {
     font-weight: 300;
     color: #EB4D4D;
 }
+
+
+/*  New changes */
+
+.btn-primary {
+    width: 8%;
+}
+
+a.btn {
+    appearance: button;
+}
+
+
+/* End */
