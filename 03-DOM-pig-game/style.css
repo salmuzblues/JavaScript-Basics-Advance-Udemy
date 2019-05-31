@@ -185,6 +185,8 @@ label {
     margin-top: 1%;
     margin-left: 1%;
 }
+#dice-1{ top: 120px; }
+#dice-2{ top: 250px; }
 
 .dice {
     position: absolute;
