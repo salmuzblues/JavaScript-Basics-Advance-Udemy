@@ -142,3 +142,33 @@
   console.log("array of ages: " + ages);
   console.log("Array fullAges more than 18: " + fullAges); 
   console.log("RATES HEART: " + rates); 
+
+
+  /* Functions returning functions */
+  function interviewQuestion(job){
+    if (job === 'designer'){
+      return function (name){
+        console.log( name + ', can you please explain what UX design is?'); 
+      }
+    }else if(job === 'teacher'){
+      return function(name){
+        console.log('What subject do you teach, ' + name + '?')}
+    }else{
+      return function(name){
+        console.log('Hello ' + name + ', what do you do? ')
+      }
+    }
+  }
+
+  var teacherQuestion = interviewQuestion('teacher');
+  var designerQuestion = interviewQuestion('designer');  
+  teacherQuestion('Jhon');
+  teacherQuestion('Maria');
+  teacherQuestion('Miguel'); 
+  designerQuestion('Rosa'); 
+  designerQuestion('Milagros'); 
+  // Other way  
+  interviewQuestion('teacher')('Yonatan'); 
+
+
+
