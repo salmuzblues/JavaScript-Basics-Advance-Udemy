@@ -167,8 +167,22 @@
   teacherQuestion('Miguel'); 
   designerQuestion('Rosa'); 
   designerQuestion('Milagros'); 
-  // Other way  
+  // Other way , the another parenthesis  is for then anonimous function
   interviewQuestion('teacher')('Yonatan'); 
 
+/*  IIFE  pattern */
+// Declaration function 
 
+/* function game () {
+  var score = Math.random() * 10;  // 0 - 9 
+  console.log(score >= 5); 
+}
+ game();  */
+
+ // statment functions (sentencia) 
+ // this function works without calling  
+ (function(goodLuck){
+  var score = Math.random() * 10;  // 0 - 9 
+  console.log(score >= 5 - goodLuck);
+ })(4); 
 
