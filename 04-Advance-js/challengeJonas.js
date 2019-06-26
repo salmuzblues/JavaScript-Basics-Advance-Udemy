@@ -122,7 +122,8 @@ function score (){
         return sc;  
     }
 } 
-
+/* When you use closure you need to store the function into a variable 
+then you can use the return function as example of score() function nad we can call it as a callback */
 var keepScore = score(); 
 function nextQuestion(){
     
