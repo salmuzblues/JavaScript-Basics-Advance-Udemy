@@ -89,7 +89,7 @@ var UIController = (function(){
             return {
                 type: document.querySelector(DOMstrings.inputType).value, // it will be either inc or exp 
                 description: document.querySelector(DOMstrings.inputDesc).value, 
-                value: document.querySelector(DOMstrings.inputValue).value
+                value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
             }           
         },
         addListItem: function(obj, type){
@@ -182,8 +182,13 @@ var controller = (function(budgetCtrl, UICtrl){
     }); 
     }
     
+    var updateBudget = function(){
+        // 1. calculate the budget
 
-     
+        // 2. return budget  
+        
+        // 3. display the budget on the UI
+    }
     // created a function 
     var ctrlAddItem = function(){
         // variables
@@ -196,15 +201,19 @@ var controller = (function(budgetCtrl, UICtrl){
             }else{
                 alert("Please missing an input"); 
             }
-        // 2. Add  the item  to the budget  controller 
-            newItem = budgetController.addItem(input.type, input.description, input.value); 
-        // 3. Add the item to the UI 
-            UICtrl.addListItem(newItem, input.type);
-        // 4. Clear fields  
-            UICtrl.clearFields(); 
-        // 4. calculate the budget 
-
-        // 5. display the budget on the UI
+            // Second validation 
+            // isNaN = it is not a number, if it is not a number, it will return true 
+            if( input.description !== "" &&  !isNaN(input.value) && input.value > 0){
+            // 2. Add  the item  to the budget  controller 
+                newItem = budgetController.addItem(input.type, input.description, input.value); 
+            // 3. Add the item to the UI 
+                UICtrl.addListItem(newItem, input.type);
+            // 4. Clear fields  
+                UICtrl.clearFields();
+            // 5. calculate and update budget 
+                updateBudget();   
+            }
+                 
     }
 
     // Create a public  initialization function 
