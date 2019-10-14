@@ -119,6 +119,25 @@ var UIController = (function(){
             // insert the html into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);  
         },
+        // Clear fields 
+        clearFields: function(){
+            // this is a trick to clean all fields 
+            var fields, fieldsArr; 
+            //Store all class 
+            fields = document.querySelectorAll(DOMstrings.inputDesc + ', ' + DOMstrings.inputValue);
+            // create this fields into on array             
+            fieldsArr = Array.prototype.slice.call(fields);  
+            // Call all elements of array with forEach
+            fieldsArr.forEach(function(current, index, array) {
+                current.value= ""; 
+            });
+
+            fieldsArr[0].focus(); 
+            /* Note: Slice is a method of javascript, +
+            it can make a copy of array, create a array, or new array with specific elements */
+
+        }, 
+
         getDOMstrings: function(){
             return DOMstrings; 
         }
@@ -180,7 +199,9 @@ var controller = (function(budgetCtrl, UICtrl){
         // 2. Add  the item  to the budget  controller 
             newItem = budgetController.addItem(input.type, input.description, input.value); 
         // 3. Add the item to the UI 
-            UICtrl.addListItem(newItem, input.type); 
+            UICtrl.addListItem(newItem, input.type);
+        // 4. Clear fields  
+            UICtrl.clearFields(); 
         // 4. calculate the budget 
 
         // 5. display the budget on the UI
